@@ -2,7 +2,7 @@ import { maxSatisfying as SemverMaxSatisfying } from 'semver'
 import { NPMPackage } from "../types";
 
 const getLink = function(name: string) {
-    return process.env.REGISTRY_URL + name;
+    return (process.env.REGISTRY_URL) ? process.env.REGISTRY_URL + name : `https://registry.npmjs.org/${name}`;
 }
 
 const getVersion = function(npmPackage: NPMPackage, version: string) {
