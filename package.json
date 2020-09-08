@@ -4,7 +4,7 @@
   "private": true,
   "main": "dist/main.js",
   "scripts": {
-    "start": "npm run build && node dist/main.js",
+    "start": "node dist/main.js",
     "build": "rm -rf dist && tsc && npm ci --prefix client && npm run build --prefix client",
     "serve": "tsc-watch --onSuccess 'node -r source-map-support/register .'",
     "test": "jest",
