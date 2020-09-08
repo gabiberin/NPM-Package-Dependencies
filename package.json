@@ -4,7 +4,7 @@
   "private": true,
   "main": "dist/main.js",
   "scripts": {
-    "start": "tsc-watch --onSuccess 'node -r source-map-support/register .'",
+    "start": "npx tsc-watch --onSuccess 'node -r source-map-support/register .'",
     "test": "jest",
     "lint": "eslint --cache '{src,__tests__}/**/*.ts'"
   },
