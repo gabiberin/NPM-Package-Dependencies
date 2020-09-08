@@ -4,7 +4,9 @@
   "private": true,
   "main": "dist/main.js",
   "scripts": {
-    "start": "npx tsc-watch --onSuccess 'node -r source-map-support/register .'",
+    "start": "npm run build && node dist/main.js",
+    "build": "rm -rf dist && tsc && npm run build --prefix client",
+    "serve": "tsc-watch --onSuccess 'node -r source-map-support/register .'",
     "test": "jest",
     "lint": "eslint --cache '{src,__tests__}/**/*.ts'"
   },
