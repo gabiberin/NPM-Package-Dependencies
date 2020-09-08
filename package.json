@@ -5,7 +5,7 @@
   "main": "dist/main.js",
   "scripts": {
     "start": "node dist/main.js",
-    "build": "rm -rf dist && tsc && npm ci --prefix client && npm run build --prefix client",
+    "build": "rm -rf dist && tsc && npm --prefix ./client ci ./client && npm --prefix client run build",
     "serve": "tsc-watch --onSuccess 'node -r source-map-support/register .'",
     "test": "jest",
     "lint": "eslint --cache '{src,__tests__}/**/*.ts'"

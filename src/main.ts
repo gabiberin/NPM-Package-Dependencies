@@ -9,7 +9,7 @@ async function main() {
   const server = createApp();
 
   // Attempt to get the default port, otherwise choose for us
-  const port = await getPort({ port: ( typeof process.env.DEFAULT_PORT === 'number' ) ?  process.env.DEFAULT_PORT : 3000 });
+  const port = await getPort({ port: +process.env.PORT! || +process.env.DEFAULT_PORT! || 3000 });
 
   server.listen(port);
 
