@@ -1,6 +1,8 @@
 # NPM Package Dependencies
 This project is a fork from https://github.com/snyk/jobs/tree/master/exercises/npm-registry.
 
+🌟 Now available in Heroku: https://npm-package-dependencies.herokuapp.com/react/latest
+
 ## Task implementation
 - Implemented a basic tree data structure, with helper functions that handle the creation process.
 - The root package is fetched first, then all the dependencies are fetched asynchronously.
