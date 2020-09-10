@@ -2,7 +2,7 @@ import * as path from 'path';
 import * as express from 'express';
 import * as cors from 'cors';
 import * as morgan from 'morgan'
-import { getPackage } from './endpoints/package';
+import { getPackage, getScopedPackage } from './endpoints/package';
 
 /**
  * Bootstrap the application framework
@@ -20,6 +20,7 @@ export function createApp() {
 
   // Package API
   app.get('/api/package/:name/:version', getPackage);
+  app.get('/api/package/:scope/:name/:version', getScopedPackage);
 
   // Handle production
   //if (process.env.NODE_ENV === 'production') {

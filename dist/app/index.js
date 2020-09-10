@@ -18,6 +18,7 @@ function createApp() {
     }));
     // Package API
     app.get('/api/package/:name/:version', package_1.getPackage);
+    app.get('/api/package/:scope/:name/:version', package_1.getScopedPackage);
     // Handle production
     //if (process.env.NODE_ENV === 'production') {
     // Static folder

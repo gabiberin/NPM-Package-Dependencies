@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getPackage = void 0;
+exports.getScopedPackage = exports.getPackage = void 0;
 var Tree_1 = require("../../data-structures/Tree");
 /**
  * Attempts to retrieve package data from the npm registry and return it
@@ -57,6 +57,31 @@ exports.getPackage = function (req, res, next) {
                     return [2 /*return*/, res.status(200).json(tree.printTree())];
                 case 3:
                     error_1 = _b.sent();
+                    return [2 /*return*/, res.status(400).send('Error: Invalid package or version')];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+};
+/**
+ * Attempts to retrieve package data from the npm registry and return it
+ */
+exports.getScopedPackage = function (req, res, next) {
+    return __awaiter(this, void 0, void 0, function () {
+        var _a, scope, name, version, tree, error_2;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    _a = req.params, scope = _a.scope, name = _a.name, version = _a.version;
+                    _b.label = 1;
+                case 1:
+                    _b.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, Tree_1.Tree.buildTree(scope + "/" + name, version)];
+                case 2:
+                    tree = _b.sent();
+                    return [2 /*return*/, res.status(200).json(tree.printTree())];
+                case 3:
+                    error_2 = _b.sent();
                     return [2 /*return*/, res.status(400).send('Error: Invalid package or version')];
                 case 4: return [2 /*return*/];
             }

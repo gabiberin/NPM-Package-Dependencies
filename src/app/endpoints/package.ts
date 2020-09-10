@@ -24,3 +24,24 @@ export const getPackage: RequestHandler = async function (req, res, next) {
     return res.status(400).send('Error: Invalid package or version');
   }
 };
+
+/**
+ * Attempts to retrieve package data from the npm registry and return it
+ */
+export const getScopedPackage: RequestHandler = async function (req, res, next) {
+  const {
+    scope,
+    name,
+    version
+  } = req.params;
+
+  try {
+
+    const tree = await Tree.buildTree(`${scope}/${name}`, version);
+
+    return res.status(200).json(tree.printTree());
+
+  } catch (error) {
+    return res.status(400).send('Error: Invalid package or version');
+  }
+};
