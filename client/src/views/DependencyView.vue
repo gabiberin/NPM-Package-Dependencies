@@ -23,10 +23,16 @@ export default Vue.extend({
   },
   methods: {
     async getPackageDependencies() {
-      const { packageName, version } = this.$route.params;
+      const { packageScope, packageName, version } = this.$route.params;
 
       try {
-        const result: AxiosResponse = await axios.get(`/api/package/${packageName}/${version}`)
+        let result: AxiosResponse;
+        if ( packageScope ) {
+          result = await axios.get(`/api/package/${packageScope}/${packageName}/${version}`)
+        } else {
+          result = await axios.get(`/api/package/${packageName}/${version}`)
+        }
+        
 
         this.tree = result.data;
         this.showTree = true;
